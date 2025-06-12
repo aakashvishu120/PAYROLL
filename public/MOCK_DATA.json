@@ -1,0 +1,32 @@
+[
+        {
+        "id": 1,
+        "firstName": "Waverly",
+        "lastName": "Cornelisse",
+        "hourlyWage": 209
+    },
+    {
+        "id": 2,
+        "firstName": "Jamesy",
+        "lastName": "Menure",
+        "hourlyWage": 199
+    },
+    {
+        "id": 3,
+        "firstName": "Townsend",
+        "lastName": "Witcomb",
+        "hourlyWage": 191
+    },
+    {
+        "id": 4,
+        "firstName": "Chelsey",
+        "lastName": "Dunstone",
+        "hourlyWage": 361
+    },
+    {
+        "id": 5,
+        "firstName": "Flossie",
+        "lastName": "Stinchcombe",
+        "hourlyWage": 473
+    }
+]
