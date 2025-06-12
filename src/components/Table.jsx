@@ -1,11 +1,23 @@
 import React from 'react'
+import { useState } from 'react'
 
 const Table = ({data}) => {
 
     console.log("inside table jsx")
     console.log(data)
-    // console.log(data[0])
-    // console.log("---------------")
+
+    const [pay, setpay] = useState(0)
+      const [hours, setHours] = useState({});
+
+    const handleInputChange = (e, id) => {
+    const value = e.target.value;
+    setHours((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+  };
+
+
 
     return (
         <div
@@ -46,7 +58,11 @@ const Table = ({data}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((item, index) => (
+                    {data.map((item, index) => {
+            const hoursWorked = hours[item.id] ;
+            const monthlyPay = item.hourlyWage * hoursWorked;
+
+            return(
                         <tr>
                          <td className="p-4 border-b border-blue-gray-50">
                             <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
@@ -70,50 +86,19 @@ const Table = ({data}) => {
                         </td>
                         <td className="p-4 border-b border-blue-gray-50">
                             <a href="#" className="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
-                                240
+                                 <input type="text" value={hoursWorked} onChange={(e) => handleInputChange(e, item.id)} className="border rounded px-2 py-1 w-20" placeholder="Hours"/>
                             </a>
                         </td>
 
                         <td className="p-4 border-b border-blue-gray-50">
                             <a href="#" className="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
-                                24000
+                              Rs {monthlyPay || '...'}
                             </a>
                         </td>
                     </tr>
-                    ))}
-                    {/* <tr>
-                         <td className="p-4 border-b border-blue-gray-50">
-                            <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                               1
-                            </p>
-                        </td>
-                        <td className="p-4 border-b border-blue-gray-50">
-                            <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                John 
-                            </p>
-                        </td>
-                        <td className="p-4 border-b border-blue-gray-50">
-                            <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                                michael
-                            </p>
-                        </td>
-                        <td className="p-4 border-b border-blue-gray-50">
-                            <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
-                              100
-                            </p>
-                        </td>
-                        <td className="p-4 border-b border-blue-gray-50">
-                            <a href="#" className="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
-                                240
-                            </a>
-                        </td>
-
-                        <td className="p-4 border-b border-blue-gray-50">
-                            <a href="#" className="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
-                                24000
-                            </a>
-                        </td>
-                    </tr> */}
+                    )
+                }
+                )}
 
                 </tbody>
             </table>
